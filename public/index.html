@@ -1,9 +1,12 @@
 <html>
     <head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="stylesheets/style.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
         <script src="javascripts/main.js"></script>
     </head>
     <body ng-app="gp5App" ng-controller="mainCtrl">
+	<div class = "container">
         <div id="login">
             <input type="text" id="username" ng-model="username" placeholder="Username">
             <button ng-click="login()">Load</button>
@@ -50,5 +53,6 @@
             </table>
 
         </div>
+	</div>
     </body>
 </html>

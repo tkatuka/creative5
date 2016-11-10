@@ -15,6 +15,8 @@ gp5App.controller("mainCtrl", function($http, $scope) {
     $scope.results = [];
     $scope.addMovie = function() {
         var url = "/m/" + $scope.username;
+	if($scope.title == '' || $scope.year == '') { return;}
+	if($scope.dvd == '' && $scope.bluray == '' && $scope.threed == '' && $scope.fourk == '' && $scope.digital == '') { return; }
         var newMovie = {title: $scope.title, year: $scope.year, dvd: $scope.dvd, bluray: $scope.bluray, threed: $scope.threed, fourk: $scope.fourk, digital: $scope.digital};
         console.log(newMovie);
         return $http.post(url, newMovie).success(function(response) {
