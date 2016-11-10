@@ -1,7 +1,13 @@
 body {
+
+  background-image: url("https://theamazingworldofpsychiatry.files.wordpress.com/2010/09/istock_000009307982large.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
 
 a {
   color: #00B7FF;
