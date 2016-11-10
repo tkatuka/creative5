@@ -1,34 +1,45 @@
 <html>
     <head>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="stylesheets/style.css" rel="stylesheet">
+ 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float">
+  	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
         <script src="javascripts/main.js"></script>
+	<title>Movie DB</title>
     </head>
     <body ng-app="gp5App" ng-controller="mainCtrl">
 	<div class = "container">
+  	<div class="w3-container w3-center font-effect-shadow-multiple"> 
         <div id="login">
             <input type="text" id="username" ng-model="username" placeholder="Username">
             <button ng-click="login()">Load</button>
         </div>
+	</div>
         <br><br>
-        <div id="movies">
-            Movie title: <input type="text" ng-model="title" ng-keypress="find()">
-            Year: <input type="text" ng-model="year"><br>
-            DVD:<input type="checkbox" ng-model="dvd">&nbsp;
-            Bluray:<input type="checkbox" ng-model="bluray">&nbsp;
-            3D:<input type="checkbox" ng-model="threed">&nbsp;
-            4K:<input type="checkbox" ng-model="fourk">&nbsp;
-            Digital:<input type="checkbox" ng-model="digital"><br>
-            <button ng-click="addMovie()">Post</button>
-        </div>
-        <div>
+        <div class="w3-container">
+    	   <div class="w3-container w3-section w3-border-top w3-border-bottom">
+
+		<div id="movies">
+		    Movie title: <input type="text" ng-model="title" ng-keypress="find()">
+		    Year: <input type="text" ng-model="year"><br>
+		    DVD:<input type="checkbox" ng-model="dvd">&nbsp;
+		    Bluray:<input type="checkbox" ng-model="bluray">&nbsp;
+		    3D:<input type="checkbox" ng-model="threed">&nbsp;
+		    4K:<input type="checkbox" ng-model="fourk">&nbsp;
+		    Digital:<input type="checkbox" ng-model="digital"><br>
+		    <button ng-click="addMovie()">Post</button>
+		</div>
+            </div>
+	</div>
+
+	<div>
             <div ng-repeat="i in results" ng-click="setMovie(i.title, i.release_date)">
                 {{i.title}} - {{i.release_date}}
             </div>
         </div>
         <br><br>
-        <div >
+     	<div class="w3-container w3-section">   
             <table>
                 <tr>
                     <th>Title
@@ -51,8 +62,9 @@
                     <td><span ng-click="delete(i._id)">X</span>
                 </tr>
             </table>
-
         </div>
 	</div>
     </body>
 </html>
+
+
