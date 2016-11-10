@@ -16,7 +16,7 @@
   <form ng-submit="addMovie()" style = "margin-top30px;">
     Movie Name: <input type="text" ng-model="movieName"></input>
     Movie Year: <input type="text" ng-model="movieYear"></input>
-    <select>
+    <select ng-model="movieType">
   	<option value="dvd">DVD</option>
   	<option value="bluray">BluRay</option>
   	<option value="3d">3D</option>
@@ -25,12 +25,13 @@
     </select>
     <button type="submit">Add Movie</button>
   </form>
+  <br>
+  <button type="submit" ng-submit="getAll()" style="margin-top30px">Get All Movies</button>
   <div>
-    {{test}}
+   {{movie}}
   </div>
-  <div ng-repeat="movie in movies | orderBy: '-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
-    {{comment.title}} - upvotes: {{comment.upvotes}}
+  <div ng-repeat="movie in movies">
+    {{movie.name}} - {{movie.year}} - {{movie.type}}
   </div>
 </div>
 </div>
