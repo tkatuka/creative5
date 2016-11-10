@@ -5,17 +5,50 @@
     </head>
     <body ng-app="gp5App" ng-controller="mainCtrl">
         <div id="login">
-            <input type="text" id="username" ng-model="username" placeholder="Username"><br>
-            <!--<input type="password" id="password" ng-model="password" placeholder="Password"><br>-->
-            <button ng-click="login()">Login</button>
-            Please login or <a ng-click="register" href="">register</a>.<br>
+            <input type="text" id="username" ng-model="username" placeholder="Username">
+            <button ng-click="login()">Load</button>
         </div>
         <br><br>
         <div id="movies">
-            <input type="text" ng-model="title"><br>
-            <input type="number" ng-model="year">
+            Movie title: <input type="text" ng-model="title" ng-keypress="find()">
+            Year: <input type="text" ng-model="year"><br>
+            DVD:<input type="checkbox" ng-model="dvd">&nbsp;
+            Bluray:<input type="checkbox" ng-model="bluray">&nbsp;
+            3D:<input type="checkbox" ng-model="threed">&nbsp;
+            4K:<input type="checkbox" ng-model="fourk">&nbsp;
+            Digital:<input type="checkbox" ng-model="digital"><br>
             <button ng-click="addMovie()">Post</button>
         </div>
-        
+        <div>
+            <div ng-repeat="i in results" ng-click="setMovie(i.title, i.release_date)">
+                {{i.title}} - {{i.release_date}}
+            </div>
+        </div>
+        <br><br>
+        <div >
+            <table>
+                <tr>
+                    <th>Title
+                    <th>Year
+                    <th>DVD
+                    <th>Bluray
+                    <th>3D
+                    <th>4K
+                    <th>Digital
+                    <th>Delete
+                </tr>
+                <tr ng-repeat="i in movielist">
+                    <td>{{i.title}}</td>
+                    <td>{{i.year}}</td>
+                    <td><input type="checkbox" ng-model="i.dvd" ng-click="flagdvd(i._id, i.dvd, i.bluray, i.threed, i.fourk, i.digital)">
+                    <td><input type="checkbox" ng-model="i.bluray" ng-click="flagdvd(i._id, i.dvd, i.bluray, i.threed, i.fourk, i.digital)">
+                    <td><input type="checkbox" ng-model="i.threed" ng-click="flagdvd(i._id, i.dvd, i.bluray, i.threed, i.fourk, i.digital)">
+                    <td><input type="checkbox" ng-model="i.fourk" ng-click="flagdvd(i._id, i.dvd, i.bluray, i.threed, i.fourk, i.digital)">
+                    <td><input type="checkbox" ng-model="i.digital" ng-click="flagdvd(i._id, i.dvd, i.bluray, i.threed, i.fourk, i.digital)">
+                    <td><span ng-click="delete(i._id)">X</span>
+                </tr>
+            </table>
+
+        </div>
     </body>
 </html>

@@ -6,9 +6,14 @@ mongoose.connect('mongodb://localhost/project5');
 
 // Create a Schema
 var moviesSchema = mongoose.Schema({
+    user: String,
     title: String,
     year: Number,
-    user: String
+    dvd: Boolean,
+    bluray: Boolean,
+    fourk: Boolean,
+    threed: Boolean,
+    digital: Boolean    
 });
 var Movies = mongoose.model('Movies', moviesSchema);
 
@@ -25,11 +30,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'My movie database' });
 });
 
-//load the database
-router.get('/m', function(req, res) {
-  res.status(200).json(Movies);
-});
-
+//load the user database
 router.get('/m/:user', function(req, res) {
   console.log("get /m/:user");
   var query = Movies.find({user: req.params.user});
@@ -38,13 +39,32 @@ router.get('/m/:user', function(req, res) {
   })
 });
 
+//post to the user database
 router.post('/m/:user', function(req, res, next) {
   console.log('post /m/:user');
-  var newItem = new Movies({user: req.params.user, title: req.body.title, year: req.body.year});
+  console.log(req.body);
+  var newItem = new Movies({user: req.params.user, title: req.body.title, year: req.body.year, dvd: req.body.dvd, bluray: req.body.bluray, threed: req.body.threed, fourk: req.body.fourk, digital: req.body.digital});
   console.log(newItem);
   newItem.save(function(err, post) {
-    if(err) return console.error(err)
+    if(err) return console.error(err);
     console.log(post);
+    res.sendStatus(200);
+  })
+});
+
+//make changes
+router.put('/m/:id', function(req, res, next) {
+  var updateData = {dvd: req.body.dvd, bluray: req.body.bluray, threed: req.body.threed, fourk: req.body.fourk, digital: req.body.digital};
+  console.log(updateData);
+  Movies.update({_id: req.params.id}, updateData, function(err, affected) {
+    console.log("");
+    res.sendStatus(200);
+  })
+});
+
+router.delete('/m/:id', function(req, res, next) {
+  Movies.findByIdAndRemove(req.params.id, function (err, offer) {
+    if(err) { throw err; }
     res.sendStatus(200);
   })
 });
