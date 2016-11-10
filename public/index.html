@@ -1,21 +1,29 @@
 <html>
 <head>
-  <title>MOVIE </title>
+  <title>Movie DB</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-  <script src="javascripts/app.js"></script>
+  <script src="javascripts/script.js"></script>
 
 </head>
 <body ng-app="movie" ng-controller="MainCtrl">
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
 <div class="page-header"> 
-  <h1>THE DESCHINE MOVIE HUB</h1>
+  <h1>The Deschine Movie Hub</h1>
 </div>
 
   <form ng-submit="addMovie()" style = "margin-top30px;">
-    <input type="text" ng-model="formContent"></input>
-    <button type="submit">Add Comment</button>
+    Movie Name: <input type="text" ng-model="movieName"></input>
+    Movie Year: <input type="text" ng-model="movieYear"></input>
+    <select>
+  	<option value="dvd">DVD</option>
+  	<option value="bluray">BluRay</option>
+  	<option value="3d">3D</option>
+  	<option value="4k">4K</option>
+	<option value="digital">Digital</option>
+    </select>
+    <button type="submit">Add Movie</button>
   </form>
   <div>
     {{test}}
